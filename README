@@ -3,3 +3,13 @@ The first step before I put my app through an intensive download process is to c
 I use version numbers on my resources and store a bunch of local version numbers related to the files already stored.
 
 This class will convert version numbers to a comparator product (via multiplication of their split parts). This comparator product can be easily compared to another in order to allow identification of which version number is higher and therefore allow you to decide whether to download or not.
+
+The main concept is segmenting and comparing each segment individually.
+The differences between the build, minor and major release points are signified with a multiplier, giving the end product integer a higher value.
+
+NSInteger *versionProduct1 = [VersionComparator getVersionComparatorProduct:@"4.12.30"]; //yields 2350
+NSInteger *versionProduct2 = [VersionComparator getVersionComparatorProduct:@"4.13.64"]; //yields 2485
+
+if (versionProduct1>versionProduct2){
+  needToUpdate=TRUE;
+}
