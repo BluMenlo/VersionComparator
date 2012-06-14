@@ -22,7 +22,7 @@ static NSInteger maxValues = 3;
         NSInteger segmentInt = [segment integerValue];
         NSInteger currentComparator = comparatorProduct;
         segmentInt+=1;
-        comparatorProduct = (segmentInt * multiplier) + currentComparator;
+        comparatorProduct = (segmentInt * multiplier) * currentComparator;
         multiplier+=100;
     }
     return comparatorProduct;
