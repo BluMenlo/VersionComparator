@@ -7,8 +7,8 @@ This class will convert version numbers to a comparator product (via multiplicat
 The main concept is segmenting and comparing each segment individually.
 The differences between the build, minor and major release points are signified with a multiplier, giving the end product integer a higher value.
 
-NSInteger *versionProduct1 = [VersionComparator getVersionComparatorProduct:@"4.12.30"]; //yields 2350
-NSInteger *versionProduct2 = [VersionComparator getVersionComparatorProduct:@"4.13.64"]; //yields 2485
+NSInteger *versionProduct1 = [VersionComparator getVersionComparatorProduct:@"4.12.150"]; //yields 90152
+NSInteger *versionProduct2 = [VersionComparator getVersionComparatorProduct:@"4.13.10"]; //yields 95012
 
 if (versionProduct1>versionProduct2){
   needToUpdate=TRUE;
