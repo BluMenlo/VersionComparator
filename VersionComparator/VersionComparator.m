@@ -1,12 +1,13 @@
 //
 //  VersionComparator.m
-//  ZimmerSales
 //
 //  Created by Dan Hanly on 12/06/2012.
 //  Copyright (c) 2012 Celf Creative. All rights reserved.
 //
 
 #import "VersionComparator.h"
+
+#define MULTIPLIER_INCREMENTER 5000;
 
 @implementation VersionComparator
 
@@ -23,7 +24,7 @@ static NSInteger maxValues = 3;
         NSInteger currentComparator = comparatorProduct;
         segmentInt+=1;
         comparatorProduct = (segmentInt * multiplier) + currentComparator;
-        multiplier+=5000;
+        multiplier=+MULTIPLIER_INCREMENTER;
     }
     return comparatorProduct;
 }
