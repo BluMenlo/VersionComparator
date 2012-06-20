@@ -1,6 +1,5 @@
 //
 //  VersionComparator.h
-//  ZimmerSales
 //
 //  Created by Dan Hanly on 12/06/2012.
 //  Copyright (c) 2012 Celf Creative. All rights reserved.
