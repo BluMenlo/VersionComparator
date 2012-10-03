@@ -9,7 +9,7 @@
 
 @interface VersionComparator : NSObject
 
-+ (NSInteger)getVersionComparatorProduct:(NSString *)version;
++ (BOOL)isVersion:(NSString *)versionA greaterThanVersion:(NSString *)versionB;
 + (NSArray *)normaliseValuesFromArray:(NSArray *)array;
 
 @end
