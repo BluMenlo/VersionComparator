@@ -4,29 +4,30 @@
 //  Created by Dan Hanly on 12/06/2012.
 //  Copyright (c) 2012 Celf Creative. All rights reserved.
 //
+//
 
 #import "VersionComparator.h"
-
-#define MULTIPLIER_INCREMENTER 5000;
 
 @implementation VersionComparator
 
 static NSInteger maxValues = 3;
 
-+ (NSInteger)getVersionComparatorProduct:(NSString *)version{
-    NSInteger comparatorProduct = 1;
-    NSArray *versionArray = [version componentsSeparatedByString:@"."];
-    versionArray = [self normaliseValuesFromArray:versionArray];
-    versionArray = [[versionArray reverseObjectEnumerator] allObjects];
-    NSInteger multiplier = 1;
-    for (NSString *segment in versionArray) {
-        NSInteger segmentInt = [segment integerValue];
-        NSInteger currentComparator = comparatorProduct;
-        segmentInt+=1;
-        comparatorProduct = (segmentInt * multiplier) + currentComparator;
-        multiplier=+MULTIPLIER_INCREMENTER;
++ (BOOL)isVersion:(NSString *)versionA greaterThanVersion:(NSString *)versionB{
+    
+    NSArray *versionAArray = [versionA componentsSeparatedByString:@"."];
+    versionAArray = [self normaliseValuesFromArray:versionAArray];
+    
+    NSArray *versionBArray = [versionB componentsSeparatedByString:@"."];
+    versionBArray = [self normaliseValuesFromArray:versionBArray];
+    
+    for (NSInteger i=0; i<maxValues; i++) {
+        if ([[versionAArray objectAtIndex:i] integerValue]>[[versionBArray objectAtIndex:i] integerValue]) {
+            return TRUE;
+        } else if ([[versionAArray objectAtIndex:i] integerValue]<[[versionBArray objectAtIndex:i] integerValue]) {
+            return FALSE;
+        }
     }
-    return comparatorProduct;
+    return FALSE;
 }
 
 + (NSArray *)normaliseValuesFromArray:(NSArray *)array{
@@ -36,7 +37,7 @@ static NSInteger maxValues = 3;
         for (NSInteger i=0; i<difference; i++) {
             [mutableArray addObject:@"0"];
         }
-        return [[NSArray alloc] initWithArray:mutableArray]; 
+        return [[NSArray alloc] initWithArray:mutableArray];
     } else {
         return array;
     }
