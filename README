@@ -2,14 +2,9 @@ An app that I developed works by downloading resources from an internet location
 The first step before I put my app through an intensive download process is to check that the resource has updated.
 I use version numbers on my resources and store a bunch of local version numbers related to the files already stored.
 
-This class will convert version numbers to a comparator product (via multiplication of their split parts). This comparator product can be easily compared to another in order to allow identification of which version number is higher and therefore allow you to decide whether to download or not.
-
 The main concept is segmenting and comparing each segment individually.
-The differences between the build, minor and major release points are signified with a multiplier, giving the end product integer a higher value.
 
-NSInteger *versionProduct1 = [VersionComparator getVersionComparatorProduct:@"4.12.150"]; //yields 90152
-NSInteger *versionProduct2 = [VersionComparator getVersionComparatorProduct:@"4.13.10"]; //yields 95012
+Obviously, when splitting parts, if the first number in a version is higher, then there's no need to compare further.
+If the first number matches, then do the same check on the second number.
 
-if (versionProduct1>versionProduct2){
-  needToUpdate=TRUE;
-}
+BOOL greater = [VersionComparator isVersion:@"2.0.0" greaterThanVersion:@"1.1.0"];
