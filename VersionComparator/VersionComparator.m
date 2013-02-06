@@ -31,13 +31,16 @@ static NSInteger maxValues = 3;
 }
 
 + (NSArray *)normaliseValuesFromArray:(NSArray *)array{
-    NSMutableArray *mutableArray = [array mutableCopy];
-    if([mutableArray count]<maxValues){
+    if([array count]<maxValues){
+        NSMutableArray *mutableArray = [array mutableCopy];
+#if ! __has_feature(objc_arc)
+        [mutableArray autorelease];
+#endif
         NSInteger difference = maxValues-[mutableArray count];
         for (NSInteger i=0; i<difference; i++) {
             [mutableArray addObject:@"0"];
         }
-        return [[NSArray alloc] initWithArray:mutableArray];
+        return [NSArray arrayWithArray:mutableArray];
     } else {
         return array;
     }
