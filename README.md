@@ -7,4 +7,4 @@ The main concept is splitting the version numbers and comparing each segment ind
 Obviously, when splitting parts, if the first number in a version is higher, then there's no need to compare further.
 If the first number matches, then do the same check on the second number.
 
-BOOL greater = [VersionComparator isVersion:@"2.0.0" greaterThanVersion:@"1.1.0"];
+  BOOL greater = [VersionComparator isVersion:@"2.0.0" greaterThanVersion:@"1.1.0"];
