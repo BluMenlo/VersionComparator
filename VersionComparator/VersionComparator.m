@@ -30,6 +30,22 @@ static NSInteger maxValues = 3;
     return FALSE;
 }
 
++ (BOOL)isVersion:(NSString *)versionA greaterThanOrEqualToVersion:(NSString *)versionB{
+    
+    NSArray *versionAArray = [versionA componentsSeparatedByString:@"."];
+    versionAArray = [self normaliseValuesFromArray:versionAArray];
+    
+    NSArray *versionBArray = [versionB componentsSeparatedByString:@"."];
+    versionBArray = [self normaliseValuesFromArray:versionBArray];
+    
+    for (NSInteger i=0; i<maxValues; i++) {
+        if ([[versionAArray objectAtIndex:i] integerValue]<[[versionBArray objectAtIndex:i] integerValue]) {
+            return FALSE;
+        }
+    }
+    return TRUE;
+}
+
 + (NSArray *)normaliseValuesFromArray:(NSArray *)array{
     if([array count]<maxValues){
         NSMutableArray *mutableArray = [array mutableCopy];
