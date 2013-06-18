@@ -10,6 +10,7 @@
 @interface VersionComparator : NSObject
 
 + (BOOL)isVersion:(NSString *)versionA greaterThanVersion:(NSString *)versionB;
++ (BOOL)isVersion:(NSString *)versionA greaterThanOrEqualToVersion:(NSString *)versionB;
 + (NSArray *)normaliseValuesFromArray:(NSArray *)array;
 
 @end
