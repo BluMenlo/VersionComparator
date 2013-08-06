@@ -48,7 +48,7 @@ static NSInteger maxValues = 3;
 
 + (NSArray *)normaliseValuesFromArray:(NSArray *)array{
     if([array count]<maxValues){
-        NSMutableArray *mutableArray = [array mutableCopy];
+        NSMutableArray *mutableArray = (array != nil) ? [array mutableCopy] : [[NSMutableArray alloc] initWithCapacity:maxValues];
 #if ! __has_feature(objc_arc)
         [mutableArray autorelease];
 #endif
